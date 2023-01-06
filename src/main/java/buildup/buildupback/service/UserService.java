@@ -23,6 +23,11 @@ public class UserService {
                 .orElseThrow(() -> new NoSuchElementException("해당 회원 정보가 존재하지 않습니다."));
     }
 
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new NoSuchElementException("해당 회원 정보가 존재하지 않습니다."));
+    }
+
     public List<User> findAll() {
         return userRepository.findAll();
     }

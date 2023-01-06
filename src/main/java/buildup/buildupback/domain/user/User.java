@@ -31,6 +31,7 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private Date birth;
 
+    private Role role;
     private Provider social;
     private String refreshToken;
     @CreatedDate
@@ -39,13 +40,14 @@ public class User extends BaseEntity {
     private LocalDateTime updatedAt;
 
     @Builder
-    public User(String username, String password, String nickname, String phone, String email, Date birth) {
+    public User(String username, String password, String nickname, String phone, String email, Date birth, Role role) {
         this.username = username;
         this.password = password;
         this.nickname = nickname;
         this.phone = phone;
         this.email = email;
         this.birth = birth;
+        this.role = role;
     }
 
 }
