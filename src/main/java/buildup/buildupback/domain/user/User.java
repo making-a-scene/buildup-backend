@@ -1,5 +1,6 @@
-package buildup.buildupback;
+package buildup.buildupback.domain.user;
 
+import buildup.buildupback.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
