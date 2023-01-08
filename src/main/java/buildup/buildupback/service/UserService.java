@@ -1,6 +1,7 @@
 package buildup.buildupback.service;
 
 import buildup.buildupback.domain.user.User;
+import buildup.buildupback.dto.CreateLocalAccountRequestDto;
 import buildup.buildupback.repository.UserRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -34,32 +35,9 @@ public class UserService {
 
     // 회원가입
     @Transactional
-    public Long join(UserJoinRequestDto userJoinRequestDto) {
-        User generatedUser = userJoinRequestDto.toEntity();
+    public Long join(User generatedUser) {
         userRepository.save(generatedUser);
         return generatedUser.getId();
     }
 
-    @Data
-    private static class UserJoinRequestDto {
-        private final BCryptPasswordEncoder passwordEncoder;
-        private String username;
-        private String password;
-        private String nickname;
-        private String phone;
-        private String email;
-        private Date birth;
-
-        public User toEntity() {
-            return User.builder()
-                    .username(username)
-                    .password(passwordEncoder.encode(password))
-                    .nickname(nickname)
-                    .phone(phone)
-                    .email(email)
-                    .birth(birth)
-                    .build();
-        }
-
-    }
 }
